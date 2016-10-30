@@ -25,7 +25,7 @@ apt-get install libgdal-dev
 apt-get install libzip-dev
 apt-get install dh-autoreconf
 
-cmake [-DCMAKE_INSTALL_PREFIX=/usr/local/MYSQL_WB] ..
+cmake [-DCMAKE_INSTALL_PREFIX=/usr/local] ..
 make -j4
-make -j4 install DESTDIR=/usr/local/MYSQL_WB
+make -j4 install
 
