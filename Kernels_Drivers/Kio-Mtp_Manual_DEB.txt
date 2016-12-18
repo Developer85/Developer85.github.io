@@ -1,0 +1,19 @@
+Kio-MTP
+
+
+1) Instalación de las dependencias
+
+apt-get install git
+git clone http://anongit.kde.org/kio-mtp
+cd kio-mtp/
+mkdir build && cd build
+apt-get install cmake
+apt-get install g++
+apt-get install kdelibs5-dev
+apt-get install libmtp-dev
+
+2) Instalación del programa
+
+cmake -DCMAKE_INSTALL_PREFIX=$( kde4-config --prefix ) -DCMAKE_BUILD_TYPE=Debug ..
+make && make install
+

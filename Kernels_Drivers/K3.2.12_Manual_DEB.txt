@@ -1,0 +1,24 @@
+Kernel 3.2.12 (x86_64)
+
+
+1) Descompresión del código fuente
+
+dpkg -x linux-image-3.2.0-0.bpo.2-amd64_3.2.12-1~bpo60+1_amd64.deb .
+dpkg -x linux-source-3.2_3.2.12-1~bpo60+1_all.deb .
+cp usr/src/linux-source-3.2.tar.bz2 /usr/src/
+cd /usr/src/ ; tar xjf linux-source-3.2.tar.bz2
+cd linux-source-3.2/
+
+2) Instalación de las dependencias
+
+apt-get install make
+apt-get install gcc
+apt-get install libncurses5-dev
+apt-get install kernel-package
+
+3) Creación de los paquetes
+
+cp ~/boot/config-3.2.0-0.bpo.2-amd64 .config
+ln -s /usr/src/linux-source-3.2/Documentation/virtual/lguest Documentation/lguest
+make-kpkg --jobs 4 --initrd kernel_image kernel_headers kernel_source
+

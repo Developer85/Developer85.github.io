@@ -1,0 +1,44 @@
+MesaLib 7.11.2 (x86)
+
+
+A) Primera Parte
+
+mkdir /usr/local/MESALIB_X32
+tar xjf MesaLib-7.11.2.tar.bz2
+cd Mesa-7.11.2/
+
+sudo apt-get install make
+sudo apt-get install gcc
+sudo apt-get install xutils-dev
+sudo apt-get install flex
+sudo apt-get install bison
+sudo apt-get install xorg-dev
+
+
+B) Segunda Parte
+
+mkdir /usr/local/LIBDRM_X32
+tar xjf libdrm-2.4.26.tar.bz2
+cd libdrm-2.4.26/
+
+./configure --prefix=/usr/local/LIBDRM_X32 --disable-radeon
+make -j4 ; make -j4 install
+
+
+C) Tercera Parte
+
+cp /usr/local/LIBDRM_X32/lib/pkgconfig/* /usr/lib/pkgconfig/
+apt-get install g++
+cd /usr/local/src/Mesa-7.11.2/
+
+./configure --prefix=/usr/local/MESALIB_X32 --with-dri-drivers=i965,swrast --with-gallium-drivers=""
+make -j4 ; make -j4 install
+
+
+D) Cuarta Parte
+
+sudo cp /usr/local/MESALIB_X32/lib/libGL.so.1 /usr/lib/
+sudo cp /usr/local/MESALIB_X32/lib/dri/* /usr/lib/dri/
+sudo cp /usr/local/LIBDRM_X32/lib/libdrm_intel.so.1 /usr/lib/
+sudo cp /usr/local/LIBDRM_X32/lib/libdrm.so.2 /usr/lib/
+

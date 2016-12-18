@@ -1,0 +1,30 @@
+Libmtp 1.1.8 / Mtpfs 1.1
+
+
+1) Instalación de Libmtp
+
+mkdir /usr/local/MTP
+tar xzf libmtp-1.1.8.tar.gz
+cd libmtp-1.1.8/
+
+yum install gcc
+yum install libusb-devel
+
+./configure --prefix=/usr/local/MTP
+make -j3 ; make -j3 install
+
+
+2) Instalación de Mtpfs
+
+tar xzf mtpfs-1.1.tar.gz
+cd mtpfs-1.1/
+
+yum install fuse-devel
+export PKG_CONFIG_PATH=/usr/local/MTP/lib/pkgconfig
+yum install glib2-devel
+yum install libid3tag-devel
+yum install libmad-devel
+
+./configure --prefix=/usr/local/MTP
+make -j3 ; make -j3 install
+

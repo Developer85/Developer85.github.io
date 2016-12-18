@@ -1,0 +1,18 @@
+Libvdpau 3.4
+
+
+1) Descompresión del código fuente
+
+tar xzf ~/Downloads/libvdpau-va-gl_0.3.4.orig.tar.gz
+cd libvdpau-va-gl-0.3.4/
+
+2) Instalación de las dependencias
+
+apt-get install cmake libvdpau-dev libva-dev libglib2.0-dev libswscale-dev libgl1-mesa-dev libglu1-mesa-dev
+
+3) Compilación e Instalación de la librería
+
+mkdir build; cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+make install
+

@@ -1,0 +1,15 @@
+Alsa Driver 1.0.24
+
+
+1) Instalación de las dependencias
+
+apt-get install gcc
+dpkg -i linux-headers-2.6.32_2.6.32-10.00.Custom_amd64.deb
+apt-get install patch
+apt-get install make
+
+2) Instalación del driver
+
+./configure --with-cards=hda-intel --with-sequencer=yes --with-kernel=/usr/src/linux-headers-2.6.32/
+make -j4 ; make -j4 install
+

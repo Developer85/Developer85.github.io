@@ -1,0 +1,23 @@
+MesaLib 7.4.4
+
+
+1) Instalación de dependencias
+
+apt-get install xorg-dev
+apt-get install g++-4.1
+
+2) Instalación de LibDrm
+
+  ./configure --prefix=/usr/local/LIBDRM
+  make ; make install
+
+3) Instalación de Dri2Proto
+
+  ./configure --prefix=/usr/local/DRI2PROTO
+  make install
+
+4) Instalación del driver gráfico
+
+./configure --prefix=/usr/local/MESA --with-dri-drivers=i965,swrast --disable-glw
+make ; make install
+

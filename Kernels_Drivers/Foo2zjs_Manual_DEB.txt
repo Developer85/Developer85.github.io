@@ -1,0 +1,34 @@
+Foo2zjs (Driver para HP LaserJet 1018)
+
+
+1) Instalación de dependencias
+
+apt-get install make gcc
+apt-get install cups
+
+2) Descompresión del código fuente del driver
+
+tar xzf foo2zjs.tar.gz
+cd foo2zjs/
+
+3) Compilación del driver
+
+make
+
+4) Descarga del firmware para la impresora
+
+./getweb 1018
+
+5) Instalación del driver
+
+make install
+
+6) Instalación del script para la carga automática del firmware de la impresora
+
+apt-get remove --purge system-config-printer-udev
+make install-hotplug
+
+7) Reinicio de CUPS
+
+make cups
+

@@ -1,0 +1,37 @@
+MySQL Workbench 6.3.4 - x64
+
+
+1) Descompresión del código fuente y preparación del entorno
+
+mkdir /usr/local/MYSQL_WB
+tar xzf mysql-workbench-community-6.3.4-src.tar.gz
+cd mysql-workbench-community-6.3.4-src/
+mkdir wb-build && cd wb-build/
+
+2) Instalación de las dependencias
+
+apt-get install cmake
+apt-get install g++
+apt-get install pkg-config
+apt-get install libgtk2.0-dev
+apt-get install libgtkmm-2.4-dev
+apt-get install swig2.0
+apt-get install python2.7-dev
+apt-get install python-paramiko
+apt-get install libmysqlclient-dev
+apt-get install libxml2-dev
+apt-get install libgl1-mesa-dev
+apt-get install libctemplate-dev
+apt-get install libmysqlcppconn-dev
+apt-get install libvsqlitepp-dev
+apt-get install libtinyxml-dev
+apt-get install libgdal-dev
+apt-get install libzip-dev
+apt-get install dh-autoreconf
+
+3) Compilación e instalación del programa
+
+cmake [-DCMAKE_INSTALL_PREFIX=/usr/local] ..
+make -j4
+make -j4 install
+

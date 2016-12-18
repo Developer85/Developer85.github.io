@@ -1,0 +1,53 @@
+Mtpfs 1.1
+
+
+OPCIÓN A
+
+1) Descompresión del código fuente
+
+tar xzf ~/Downloads/mtpfs-1.1.tar.gz
+cd mtpfs-1.1/
+
+2) Instalación de las dependencias
+
+sudo apt-get install libmtp-dev fuse libmtp9 pkg-config libfuse-dev libglib2.0-dev libmad0-dev libid3tag0-dev dh-make autotools-dev
+
+3) Creación e Instalación del paquete
+
+dh_make -s -f ~/Downloads/mtpfs-1.1.tar.gz
+fakeroot debian/rules binary
+dpkg -i mtpfs_1.1-1_amd64.deb
+
+
+OPCIÓN B
+
+1) Instalación de Libmtp
+
+mkdir /usr/local/MTP
+
+tar xzf libmtp-1.1.8.tar.gz
+cd libmtp-1.1.8/
+
+apt-get install pkg-config
+apt-get install libusb-dev
+apt-get install libgcrypt11-dev
+#apt-get install libtool
+
+./configure --prefix=/usr/local/MTP
+make -j3 ; make -j3 install
+
+
+2) Instalación de Mtpfs
+
+tar xzf mtpfs-1.1.tar.gz
+cd mtpfs-1.1/
+
+export PKG_CONFIG_PATH=/usr/local/MTP/lib/pkgconfig
+apt-get install libfuse-dev
+apt-get install libglib2.0-dev
+apt-get install libmad0-dev
+apt-get install libid3tag0-dev
+
+./configure --prefix=/usr/local/MTP
+make -j3 ; make -j3 install
+

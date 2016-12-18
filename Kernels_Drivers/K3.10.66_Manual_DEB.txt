@@ -1,0 +1,22 @@
+Kernel 3.10.66 (x86_64)
+
+
+1) Descompresión del código fuente
+
+tar xzf kernel-3.10.66.tar.gz
+chmod -R a-s kernel-3.10.66
+cd kernel-3.10.66/
+
+2) Instalación de las dependencias
+
+apt-get install build-essential
+
+3) Creación de los paquetes
+
+make -j3 deb-pkg
+
+4) Instalación de los paquetes generados
+
+dpkg -i linux-image-3.10.66_3.10.66-2_amd64.deb
+dpkg -i linux-headers-3.10.66_3.10.66-2_amd64.deb
+

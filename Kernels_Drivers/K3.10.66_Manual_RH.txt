@@ -1,0 +1,33 @@
+Kernel 3.10.66 (x86_64)
+
+
+1) Instalación de las dependencias
+
+yum install gcc
+yum install ncurses-devel
+yum install rpmdevtools
+
+2) Preparación del entorno de compilación
+
+rpmdev-setuptree
+tar xJf linux-3.10.66.tar.xz
+cd linux-3.10.66/
+
+3) Configuración del kernel
+
+make -j3 mrproper
+make -j3 menuconfig
+
+---> Lugar: Device Drivers > Network device support > Wireless LAN > Atheros Wireless Cards
+---> Habilitar: Atheros bluetooth coexistence support, Atheros 802.11n wireless cards support, Atheros ath9k PCI/PCIe bus support y Atheros ath9k rate control
+
+4) Creación e instalación de los paquetes
+
+make -j3 rpm-pkg
+yum install kernel-3.10.66-1.x86_64.rpm
+
+5) Configuración final del kernel
+
+mkinitrd /boot/initramfs-3.10.66.img 3.10.66
+vi /boot/grub/grub.conf
+

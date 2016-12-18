@@ -1,0 +1,46 @@
+Kernel 3.2.68 (x86_64)
+
+
+1) Instalación de dependencias
+
+vim /etc/apt/sources.list
+apt-get update
+apt-get build-dep linux
+apt-get install libncurses5-dev
+
+2) Descarga del código fuente
+
+apt-get source linux
+cd linux-3.2.68/
+
+3) Configuración del kernel
+
+cp /boot/config-3.2.0-4-amd64 .config
+make menuconfig
+
+4) Creación de los paquetes
+
+make -j3 deb-pkg
+
+
+** Para el equipo de entonces, necesité tocar la configuración del kernel:
+
+a) Habilitar funcionalidad del driver WiFi
+
+- Device Drivers
+  - Network device support
+    - Wireless LAN
+      - Atheros Wireless Cards
+	- Atheros ath9k rate control
+
+b) Deshabilitar módulo problemático
+
+- Device Drivers
+  - Staging drivers
+    - Realtek RTS5139 USB card reader support
+
+c) Deshabilitar Kernel Debugging
+
+- Kernel hacking
+  - Kernel debugging
+

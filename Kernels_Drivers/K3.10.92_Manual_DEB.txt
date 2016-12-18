@@ -1,0 +1,26 @@
+Kernel 3.10.92 (x86_64)
+
+
+1) Descompresión del código fuente
+
+tar xJf linux-3.10.92.tar.xz
+cd linux-3.10.92/
+
+2) Instalación de las dependencias
+
+apt-get install build-essential
+apt-get install make
+
+3) Configuración del kernel
+
+make -j3 mrproper
+make -j3 clean
+make -j3 oldconfig
+make -j3 menuconfig
+
+4) Creación e Instalación de los paquetes
+
+make -j3 deb-pkg
+dpkg -i linux-image-3.10.92_3.10.92-1_amd64.deb
+dpkg -i linux-headers-3.10.92_3.10.92-1_amd64.deb
+
